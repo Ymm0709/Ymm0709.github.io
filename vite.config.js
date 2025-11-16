@@ -4,5 +4,5 @@ import vue from '@vitejs/plugin-vue'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [vue()],
-  base: process.env.NODE_ENV === 'production' ? '/personal-website/' : '/', // GitHub Pages base path
+  base: process.env.GITHUB_PAGES === 'true' ? '/personal-website/' : '/', // GitHub Pages base path
 })
