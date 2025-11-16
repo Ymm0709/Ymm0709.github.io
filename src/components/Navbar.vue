@@ -2,40 +2,61 @@
   <nav class="navbar">
     <div class="nav-container">
       <div class="nav-logo">
-        <router-link to="/" class="logo-link">My Portfolio</router-link>
+        <router-link to="/" class="logo-link">{{ t('portfolio') }}</router-link>
       </div>
       <button class="nav-toggle" @click="toggleMenu" aria-label="Toggle navigation">
         <span class="hamburger"></span>
         <span class="hamburger"></span>
         <span class="hamburger"></span>
       </button>
-      <ul class="nav-menu" :class="{ active: menuOpen }">
-        <li class="nav-item">
-          <router-link to="/" class="nav-link" @click="closeMenu">Home</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link to="/about" class="nav-link" @click="closeMenu">About Me</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link to="/skills" class="nav-link" @click="closeMenu">Skills</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link to="/projects" class="nav-link" @click="closeMenu">Projects</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link to="/blog" class="nav-link" @click="closeMenu">Blog</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link to="/links" class="nav-link" @click="closeMenu">Links</router-link>
-        </li>
-      </ul>
+      <div class="nav-right">
+        <ul class="nav-menu" :class="{ active: menuOpen }">
+          <li class="nav-item">
+            <router-link to="/" class="nav-link" @click="closeMenu">{{ t('nav.home') }}</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/about" class="nav-link" @click="closeMenu">{{ t('nav.about') }}</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/skills" class="nav-link" @click="closeMenu">{{ t('nav.skills') }}</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/projects" class="nav-link" @click="closeMenu">{{ t('nav.projects') }}</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/blog" class="nav-link" @click="closeMenu">{{ t('nav.blog') }}</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/links" class="nav-link" @click="closeMenu">{{ t('nav.links') }}</router-link>
+          </li>
+        </ul>
+        <div class="language-selector">
+          <button
+            class="lang-option"
+            :class="{ active: currentLanguage === 'en' }"
+            @click="setLanguage('en')"
+          >
+            EN
+          </button>
+          <span class="lang-divider">|</span>
+          <button
+            class="lang-option"
+            :class="{ active: currentLanguage === 'zh' }"
+            @click="setLanguage('zh')"
+          >
+            中文
+          </button>
+        </div>
+      </div>
     </div>
   </nav>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import { injectLanguage } from '../composables/useLanguage'
 
+const { currentLanguage, setLanguage, t } = injectLanguage()
 const menuOpen = ref(false)
 
 const toggleMenu = () => {
@@ -67,6 +88,46 @@ const closeMenu = () => {
   justify-content: space-between;
   align-items: center;
 }
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.language-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.lang-option {
+  background: transparent;
+  border: none;
+  color: var(--text-light);
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.lang-option:hover {
+  color: var(--primary-color);
+  background: rgba(6, 182, 212, 0.1);
+}
+
+.lang-option.active {
+  color: var(--primary-color);
+  background: rgba(6, 182, 212, 0.2);
+}
+
+.lang-divider {
+  color: var(--text-muted);
+  font-size: 0.7rem;
+}
+
 
 .logo-link {
   font-size: 1.5rem;
@@ -131,6 +192,23 @@ const closeMenu = () => {
 @media (max-width: 768px) {
   .nav-toggle {
     display: flex;
+  }
+
+  .nav-right {
+    gap: 1rem;
+  }
+
+  .language-selector {
+    gap: 0.2rem;
+  }
+
+  .lang-option {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.7rem;
+  }
+
+  .lang-divider {
+    font-size: 0.65rem;
   }
 
   .nav-menu {

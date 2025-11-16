@@ -1,0 +1,53 @@
+[
+  {
+    "id": 1,
+    "title": "Vue.js 入门指南",
+    "excerpt": "Vue.js 是一个渐进式 JavaScript 框架，让构建用户界面变得更加简单和愉快。在这篇文章中，我将分享我学习 Vue.js 的旅程以及一些给初学者的建议。",
+    "content": "Vue.js 是一个渐进式 JavaScript 框架，让构建用户界面变得更加简单和愉快。在这篇文章中，我将分享我学习 Vue.js 的旅程以及一些给初学者的建议。\n\n## 为什么选择 Vue.js？\n\nVue.js 以其简单性和易学性而脱颖而出。与其他框架不同，Vue 允许你从小规模开始，然后根据需要逐步采用更高级的功能。文档非常出色，社区对新人也非常友好。\n\n## 核心概念\n\n### 组件\n\nVue.js 围绕组件的概念构建。组件是封装了 HTML、CSS 和 JavaScript 的可重用代码片段。这使你的代码更加模块化，更易于维护。\n\n### 响应式系统\n\nVue 最强大的功能之一是其响应式系统。当你更改 Vue 实例中的数据时，DOM 会自动更新以反映这些更改。这消除了手动操作 DOM 的需要。\n\n### 指令\n\nVue 提供了称为指令的特殊属性，允许你将响应式行为应用到 DOM。常见的指令包括 `v-if`、`v-for`、`v-bind` 和 `v-on`。\n\n## 开始使用\n\n要开始使用 Vue.js，你可以通过 CDN 包含它，或使用像 Vite 这样的构建工具。我建议在新项目中使用 Vite，因为它提供了快速的开发体验和出色的工具。\n\n## 结论\n\nVue.js 是构建现代 Web 应用程序的绝佳选择。其平缓的学习曲线和强大的功能使其适合初学者和经验丰富的开发者。我鼓励你尝试一下，看看它如何改善你的开发工作流程。",
+    "author": "张羽阳",
+    "date": "2024-01-15",
+    "tags": ["Vue.js", "JavaScript", "网页开发", "前端"],
+    "readTime": "5 分钟阅读"
+  },
+  {
+    "id": 2,
+    "title": "理解 Vue Router",
+    "excerpt": "Vue Router 是 Vue.js 的官方路由器。它允许你构建具有客户端路由的单页应用程序。学习如何设置和有效使用它。",
+    "content": "Vue Router 是 Vue.js 的官方路由器。它允许你构建具有客户端路由的单页应用程序。学习如何设置和有效使用它。\n\n## 什么是 Vue Router？\n\nVue Router 是 Vue.js 应用程序的路由器库。它使你能够构建单页应用程序（SPA），其中导航在客户端进行，无需完整页面重新加载。\n\n## 安装\n\n你可以使用 npm 或 yarn 安装 Vue Router：\n\n```bash\nnpm install vue-router@4\n```\n\n## 基本设置\n\n要使用 Vue Router，你需要：\n\n1. 创建路由器实例\n2. 定义你的路由\n3. 将路由器添加到你的 Vue 应用\n4. 使用 `<router-view>` 显示路由组件\n\n## 路由配置\n\n路由被定义为路由对象数组。每个路由对象包含路径、名称和组件。\n\n## 导航\n\n你可以使用 `<router-link>` 组件在路由之间导航，或使用 `this.$router.push()` 以编程方式导航。\n\n## 动态路由\n\nVue Router 支持使用路由参数的动态路由。这对于根据 URL 参数（如项目或博客文章 ID）显示不同内容很有用。\n\n## 结论\n\nVue Router 是构建具有多个页面的 Vue.js 应用程序的必备工具。它易于学习，并提供了客户端路由所需的所有功能。",
+    "author": "张羽阳",
+    "date": "2024-02-01",
+    "tags": ["Vue.js", "Vue Router", "路由", "SPA"],
+    "readTime": "7 分钟阅读"
+  },
+  {
+    "id": 3,
+    "title": "Java 编程入门",
+    "excerpt": "Java 是世界上最流行和通用的编程语言之一。学习 Java 编程的基础知识，从基本语法到面向对象的概念。",
+    "content": "Java 是世界上最流行和通用的编程语言之一。学习 Java 编程的基础知识，从基本语法到面向对象的概念。\n\n## 为什么选择 Java？\n\nJava 是一种强大的面向对象编程语言，具有平台独立性。一旦你编写了 Java 代码，它就可以在任何安装了 Java 虚拟机（JVM）的设备上运行。这种\"一次编写，到处运行\"的理念使 Java 成为跨平台开发的理想选择。\n\n## 核心概念\n\n### 面向对象编程\n\nJava 围绕对象和类的概念构建。Java 中的一切都是对象，这使得代码更加模块化、可重用且易于维护。类定义了对象的蓝图，封装了数据和方法。\n\n### 变量和数据类型\n\nJava 具有强类型，这意味着你必须声明每个变量的类型。常见的数据类型包括 `int`、`double`、`String`、`boolean` 等。理解数据类型是编写有效 Java 程序的基础。\n\n### 控制结构\n\nJava 提供了各种控制结构，如 `if-else` 语句、循环（`for`、`while`、`do-while`）和 `switch` 语句。这些允许你控制程序的流程并根据条件做出决策。\n\n## 开始使用\n\n要开始用 Java 编程，你需要安装 Java 开发工具包（JDK）并设置开发环境。流行的 IDE 如 IntelliJ IDEA 或 Eclipse 可以帮助简化开发过程。\n\n## 最佳实践\n\n1. 遵循 Java 命名约定\n2. 编写清晰、可读的代码并添加适当的注释\n3. 有效使用面向对象原则\n4. 正确处理异常\n5. 为代码编写单元测试\n\n## 结论\n\nJava 对初学者和经验丰富的开发者来说都是一种优秀的语言。其强类型、面向对象的特性以及广泛的标准库使其适用于各种应用程序，从网页开发到移动应用和企业系统。",
+    "author": "张羽阳",
+    "date": "2024-02-15",
+    "tags": ["Java", "编程", "面向对象", "软件开发"],
+    "readTime": "6 分钟阅读"
+  },
+  {
+    "id": 4,
+    "title": "在 Vue 中使用 JSON 数据",
+    "excerpt": "学习如何在 Vue.js 应用程序中获取和显示 JSON 数据。这对于构建动态加载内容的数据驱动应用程序至关重要。",
+    "content": "学习如何在 Vue.js 应用程序中获取和显示 JSON 数据。这对于构建动态加载内容的数据驱动应用程序至关重要。\n\n## 获取 JSON 数据\n\nVue.js 应用程序通常需要从外部源获取数据。Fetch API 是在 JavaScript 中发出 HTTP 请求的现代方法。\n\n## 使用 Fetch API\n\nFetch API 提供了一个全局的 `fetch()` 函数，返回一个 Promise。这是一个基本示例：\n\n```javascript\nfetch('/data/projects.json')\n  .then(response => response.json())\n  .then(data => {\n    // 使用数据\n  })\n  .catch(error => {\n    // 处理错误\n  });\n```\n\n## 在 Vue 组件中\n\n在 Vue 组件中获取数据时，你应该使用生命周期钩子，如 `onMounted`（组合式 API）或 `mounted`（选项式 API），在组件创建时获取数据。\n\n## 错误处理\n\n获取数据时始终实现适当的错误处理。这包括处理网络错误、无效的 JSON 和空响应。\n\n## 加载状态\n\n在获取数据时显示加载指示器。这通过提供数据正在加载的反馈来改善用户体验。\n\n## 最佳实践\n\n1. 将获取的数据存储在响应式变量中\n2. 处理加载和错误状态\n3. 使用 async/await 编写更清晰的代码\n4. 在适当时缓存数据\n5. 验证数据结构\n\n## 结论\n\n获取和显示 JSON 数据是 Vue.js 开发者的基本技能。通过遵循这些实践，你可以构建强大的数据驱动应用程序。",
+    "author": "张羽阳",
+    "date": "2025-03-01",
+    "tags": ["Vue.js", "JavaScript", "API", "JSON", "Fetch"],
+    "readTime": "8 分钟阅读"
+  },
+  {
+    "id": 5,
+    "title": "CSS Grid vs Flexbox",
+    "excerpt": "CSS Grid 和 Flexbox 都是强大的布局工具，但它们服务于不同的目的。学习何时使用每个工具以及如何有效地组合它们。",
+    "content": "CSS Grid 和 Flexbox 都是强大的布局工具，但它们服务于不同的目的。学习何时使用每个工具以及如何有效地组合它们。\n\n## CSS Grid\n\nCSS Grid 是一个二维布局系统。它非常适合创建具有行和列的复杂布局。当你需要控制两个维度时使用 Grid。\n\n### 何时使用 Grid\n\n- 复杂的二维布局\n- 当你需要对行和列进行精确控制时\n- 创建页面布局\n- 重叠元素\n\n## Flexbox\n\nFlexbox 是一个一维布局系统。它非常适合在单个方向（行或列）排列项目。使用 Flexbox 进行组件级布局。\n\n### 何时使用 Flexbox\n\n- 一维布局\n- 在容器内对齐项目\n- 在项目之间分配空间\n- 导航栏\n- 卡片布局\n\n## 组合 Grid 和 Flexbox\n\n你可以在同一个项目中使用 Grid 和 Flexbox。常见的模式是使用 Grid 进行主页面布局，使用 Flexbox 进行单个组件。\n\n## 示例\n\n### Grid 示例\n\n```css\n.container {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 1rem;\n}\n```\n\n### Flexbox 示例\n\n```css\n.container {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n```\n\n## 结论\n\nGrid 和 Flexbox 都是现代网页开发的必备工具。了解何时使用每个工具将帮助你更高效地创建更好的布局。",
+    "author": "张羽阳",
+    "date": "2025-03-15",
+    "tags": ["CSS", "Grid", "Flexbox", "布局"],
+    "readTime": "6 分钟阅读"
+  }
+]
+

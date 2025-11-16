@@ -1,0 +1,52 @@
+[
+  {
+    "id": 5,
+    "title": "CSS Grid vs Flexbox",
+    "excerpt": "CSS Grid and Flexbox are both powerful layout tools, but they serve different purposes. Learn when to use each and how to combine them effectively.",
+    "content": "CSS Grid and Flexbox are both powerful layout tools, but they serve different purposes. Learn when to use each and how to combine them effectively.\n\n## CSS Grid\n\nCSS Grid is a two-dimensional layout system. It's perfect for creating complex layouts with rows and columns. Use Grid when you need to control both dimensions.\n\n### When to Use Grid\n\n- Complex two-dimensional layouts\n- When you need precise control over both rows and columns\n- Creating page layouts\n- Overlapping elements\n\n## Flexbox\n\nFlexbox is a one-dimensional layout system. It's ideal for arranging items in a single direction (either row or column). Use Flexbox for component-level layouts.\n\n### When to Use Flexbox\n\n- One-dimensional layouts\n- Aligning items within a container\n- Distributing space between items\n- Navigation bars\n- Card layouts\n\n## Combining Grid and Flexbox\n\nYou can use both Grid and Flexbox in the same project. A common pattern is to use Grid for the main page layout and Flexbox for individual components.\n\n## Examples\n\n### Grid Example\n\n```css\n.container {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 1rem;\n}\n```\n\n### Flexbox Example\n\n```css\n.container {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n```\n\n## Conclusion\n\nBoth Grid and Flexbox are essential tools for modern web development. Understanding when to use each will help you create better layouts more efficiently.",
+    "author": "Yung",
+    "date": "2025-03-15",
+    "tags": ["CSS", "Grid", "Flexbox", "Layout"],
+    "readTime": "6 min read"
+  },
+  {
+    "id": 4,
+    "title": "Working with JSON Data in Vue",
+    "excerpt": "Learn how to fetch and display JSON data in Vue.js applications. This is essential for building data-driven applications that load content dynamically.",
+    "content": "Learn how to fetch and display JSON data in Vue.js applications. This is essential for building data-driven applications that load content dynamically.\n\n## Fetching JSON Data\n\nVue.js applications often need to fetch data from external sources. The Fetch API is a modern way to make HTTP requests in JavaScript.\n\n## Using Fetch API\n\nThe Fetch API provides a global `fetch()` function that returns a Promise. Here's a basic example:\n\n```javascript\nfetch('/data/projects.json')\n  .then(response => response.json())\n  .then(data => {\n    // Use the data\n  })\n  .catch(error => {\n    // Handle errors\n  });\n```\n\n## In Vue Components\n\nWhen fetching data in Vue components, you should use lifecycle hooks like `onMounted` (Composition API) or `mounted` (Options API) to fetch data when the component is created.\n\n## Error Handling\n\nAlways implement proper error handling when fetching data. This includes handling network errors, invalid JSON, and empty responses.\n\n## Loading States\n\nShow loading indicators while data is being fetched. This improves the user experience by providing feedback that data is being loaded.\n\n## Best Practices\n\n1. Store fetched data in reactive variables\n2. Handle loading and error states\n3. Use async/await for cleaner code\n4. Cache data when appropriate\n5. Validate data structure\n\n## Conclusion\n\nFetching and displaying JSON data is a fundamental skill for Vue.js developers. By following these practices, you can build robust, data-driven applications.",
+    "author": "Yung",
+    "date": "2025-03-01",
+    "tags": ["Vue.js", "JavaScript", "API", "JSON", "Fetch"],
+    "readTime": "8 min read"
+  },
+  {
+    "id": 3,
+    "title": "Getting Started with Java Programming",
+    "excerpt": "Java is one of the most popular and versatile programming languages in the world. Learn the fundamentals of Java programming, from basic syntax to object-oriented concepts.",
+    "content": "Java is one of the most popular and versatile programming languages in the world. Learn the fundamentals of Java programming, from basic syntax to object-oriented concepts.\n\n## Why Java?\n\nJava is a powerful, object-oriented programming language that is platform-independent. Once you write Java code, it can run on any device that has a Java Virtual Machine (JVM). This \"write once, run anywhere\" philosophy makes Java ideal for cross-platform development.\n\n## Key Concepts\n\n### Object-Oriented Programming\n\nJava is built around the concept of objects and classes. Everything in Java is an object, which makes code more modular, reusable, and easier to maintain. Classes define the blueprint for objects, encapsulating data and methods.\n\n### Variables and Data Types\n\nJava has strong typing, meaning you must declare the type of each variable. Common data types include `int`, `double`, `String`, `boolean`, and more. Understanding data types is fundamental to writing effective Java programs.\n\n### Control Structures\n\nJava provides various control structures like `if-else` statements, loops (`for`, `while`, `do-while`), and `switch` statements. These allow you to control the flow of your program and make decisions based on conditions.\n\n## Getting Started\n\nTo start programming in Java, you need to install the Java Development Kit (JDK) and set up your development environment. Popular IDEs like IntelliJ IDEA or Eclipse can help streamline your development process.\n\n## Best Practices\n\n1. Follow Java naming conventions\n2. Write clear, readable code with proper comments\n3. Use object-oriented principles effectively\n4. Handle exceptions properly\n5. Write unit tests for your code\n\n## Conclusion\n\nJava is an excellent language for beginners and experienced developers alike. Its strong typing, object-oriented nature, and extensive standard library make it suitable for a wide range of applications, from web development to mobile apps and enterprise systems.",
+    "author": "Yung",
+    "date": "2024-02-15",
+    "tags": ["Java", "Programming", "Object-Oriented", "Software Development"],
+    "readTime": "6 min read"
+  },
+  {
+    "id": 2,
+    "title": "Understanding Vue Router",
+    "excerpt": "Vue Router is the official router for Vue.js. It allows you to build single-page applications with client-side routing. Learn how to set it up and use it effectively.",
+    "content": "Vue Router is the official router for Vue.js. It allows you to build single-page applications with client-side routing. Learn how to set it up and use it effectively.\n\n## What is Vue Router?\n\nVue Router is a router library for Vue.js applications. It enables you to build single-page applications (SPAs) where navigation happens on the client side, without full page reloads.\n\n## Installation\n\nYou can install Vue Router using npm or yarn:\n\n```bash\nnpm install vue-router@4\n```\n\n## Basic Setup\n\nTo use Vue Router, you need to:\n\n1. Create a router instance\n2. Define your routes\n3. Add the router to your Vue app\n4. Use `<router-view>` to display routed components\n\n## Route Configuration\n\nRoutes are defined as an array of route objects. Each route object contains a path, name, and component.\n\n## Navigation\n\nYou can navigate between routes using `<router-link>` components or programmatically using `this.$router.push()`.\n\n## Dynamic Routes\n\nVue Router supports dynamic routes using route parameters. This is useful for displaying different content based on URL parameters, such as project or blog post IDs.\n\n## Conclusion\n\nVue Router is an essential tool for building Vue.js applications with multiple pages. It's easy to learn and provides all the features you need for client-side routing.",
+    "author": "Yung",
+    "date": "2024-02-01",
+    "tags": ["Vue.js", "Vue Router", "Routing", "SPA"],
+    "readTime": "7 min read"
+  },
+  {
+    "id": 1,
+    "title": "Getting Started with Vue.js",
+    "excerpt": "Vue.js is a progressive JavaScript framework that makes building user interfaces easier and more enjoyable. In this post, I'll share my journey learning Vue.js and some tips for beginners.",
+    "content": "Vue.js is a progressive JavaScript framework that makes building user interfaces easier and more enjoyable. In this post, I'll share my journey learning Vue.js and some tips for beginners.\n\n## Why Vue.js?\n\nVue.js stands out for its simplicity and ease of learning. Unlike other frameworks, Vue allows you to start small and gradually adopt more advanced features as needed. The documentation is excellent, and the community is welcoming to newcomers.\n\n## Key Concepts\n\n### Components\n\nVue.js is built around the concept of components. Components are reusable pieces of code that encapsulate HTML, CSS, and JavaScript. This makes your code more modular and easier to maintain.\n\n### Reactivity\n\nOne of Vue's most powerful features is its reactivity system. When you change data in your Vue instance, the DOM automatically updates to reflect those changes. This eliminates the need for manual DOM manipulation.\n\n### Directives\n\nVue provides special attributes called directives that allow you to apply reactive behavior to the DOM. Common directives include `v-if`, `v-for`, `v-bind`, and `v-on`.\n\n## Getting Started\n\nTo get started with Vue.js, you can either include it via a CDN or use a build tool like Vite. I recommend using Vite for new projects as it provides a fast development experience and excellent tooling.\n\n## Conclusion\n\nVue.js is an excellent choice for building modern web applications. Its gentle learning curve and powerful features make it suitable for both beginners and experienced developers. I encourage you to try it out and see how it can improve your development workflow.",
+    "author": "Yung",
+    "date": "2024-01-15",
+    "tags": ["Vue.js", "JavaScript", "Web Development", "Frontend"],
+    "readTime": "5 min read"
+  }
+]

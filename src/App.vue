@@ -5,13 +5,17 @@
       <router-view />
     </main>
     <footer class="footer">
-      <p>&copy; 2024 My Portfolio. All rights reserved.</p>
+      <p>&copy; 2025 Zhang Yuyang. All rights reserved.</p>
     </footer>
   </div>
 </template>
 
 <script setup>
 import Navbar from './components/Navbar.vue'
+import { provideLanguage } from './composables/useLanguage'
+
+// 提供语言功能给所有子组件，并获取翻译函数用于当前组件
+const { t } = provideLanguage()
 </script>
 
 <style>
@@ -29,7 +33,7 @@ import Navbar from './components/Navbar.vue'
 
 .main-content {
   flex: 1;
-  padding: 2rem 0;
+  padding: 0 0 2rem 0;
 }
 
 .footer {
@@ -43,7 +47,7 @@ import Navbar from './components/Navbar.vue'
 
 @media (max-width: 768px) {
   .main-content {
-    padding: 1rem 0;
+    padding: 0 0 1rem 0;
   }
 }
 </style>

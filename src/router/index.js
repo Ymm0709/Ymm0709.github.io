@@ -55,7 +55,24 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    // 如果有保存的位置（比如浏览器后退），则恢复到该位置
+    if (savedPosition) {
+      return savedPosition
+    }
+    // 进入详情页时滚动到顶部
+    if (to.name === 'ProjectDetail' || to.name === 'BlogDetail') {
+      return { top: 0 }
+    }
+    // 从详情页返回到列表页时，不执行默认滚动（由组件自己处理）
+    if ((from.name === 'ProjectDetail' && to.name === 'Projects') ||
+        (from.name === 'BlogDetail' && to.name === 'Blog')) {
+      return false
+    }
+    // 其他情况滚动到顶部
+    return { top: 0 }
+  }
 })
 
 export default router

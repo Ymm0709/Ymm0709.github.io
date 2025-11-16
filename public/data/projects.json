@@ -15,44 +15,62 @@
   },
   {
     "id": 2,
-    "name": "Task Management App",
-    "introduction": "A full-featured task management application with drag-and-drop functionality and real-time updates.",
-    "description": "A comprehensive task management application that allows users to create, organize, and track their tasks. Features include drag-and-drop task reordering, task categories, due dates, and priority levels. The app uses local storage to persist data and provides a clean, intuitive user interface.",
+    "name": "Battle Game - Reimagined Gomoku",
+    "introduction": "Reimagined Gomoku with a unique twist: trapped pieces can convert opponents. This project demonstrates my inventive thinking, strategic game design, ability to model complex game logic and robust object oriented programming skills.",
+    "description": "A creative adaptation of the classic Gomoku game built with Java. Two players alternate placing black/white stones on a 15×15 grid, aiming to form an unbroken line of five stones horizontally, vertically, or diagonally. The innovative feature: if you trap an opponent's stone between two of your stones, it gets captured and converts to your color. This unique mechanic adds strategic depth to the traditional gameplay. The project showcases advanced object-oriented programming principles, complex game state management, and interactive GUI implementation using Java Swing. As both game designer and programmer, I designed the game rules, implemented the core game logic, win condition detection, and the piece conversion system.",
     "screenshots": [
-      "/screenshots/taskapp-1.png",
-      "/screenshots/taskapp-2.png"
+      "/screenshots/battle-game-cover.png",
+      "/screenshots/Code.png",
+      "/screenshots/UML.png"
     ],
-    "technologies": ["Vue.js", "JavaScript", "CSS", "Local Storage API"],
-    "contribution": "Lead developer - Implemented core functionality, UI/UX design, and state management.",
-    "githubUrl": "https://github.com/yourusername/task-manager",
-    "demoUrl": "https://taskmanager.vercel.app"
+    "technologies": ["Java", "Object-Oriented Programming", "Game Design", "GUI Development", "Algorithm Design"],
+    "contribution": "Game Designer & Programmer - Designed game mechanics, implemented core game logic including win detection and piece conversion system, and developed the interactive GUI.",
+    "githubUrl": "https://github.com/Ymm0709/Battle-Game",
+    "demoUrl": null
   },
   {
     "id": 3,
-    "name": "Weather Dashboard",
-    "introduction": "A beautiful weather dashboard that displays current conditions and forecasts using a weather API.",
-    "description": "An interactive weather dashboard that fetches real-time weather data from an external API. Users can search for weather information by city name. The dashboard displays current temperature, humidity, wind speed, and a 5-day forecast. Features a responsive design with beautiful weather icons and animations.",
+    "name": "Capstone - Campus Panorama Project",
+    "introduction": "Led a three-member team to develop a 360° virtual campus tour using Pano2VR and web programming. Captured panoramic footage across every corner of the campus with a 360° camera and designed scripts and interactive navigation to create a better user experience.",
+    "description": "To create a comprehensive 360° panoramic view of our school, we aim to vividly showcase the campus environment through immersive visual experiences. This project will support virtual tours that allow students, parents, and visitors to explore the school from anywhere, gaining a realistic sense of its layout, facilities, and atmosphere. By integrating high-quality panoramic images and interactive navigation, we hope to enhance engagement, improve accessibility, and provide a more intuitive understanding of our campus culture and surroundings.",
     "screenshots": [
-      "/screenshots/weather-1.png"
+      "/screenshots/Panoramic view of the playground.png",
+      "/screenshots/panoramic video.mov"
     ],
-    "technologies": ["Vue.js", "JavaScript", "API Integration", "CSS", "Axios"],
-    "contribution": "Full-stack developer - Integrated weather API, designed UI components, and implemented search functionality.",
-    "githubUrl": "https://github.com/yourusername/weather-dashboard",
-    "demoUrl": "https://weather-dashboard.vercel.app"
+    "technologies": ["Pano2VR", "Web Programming", "360° Camera", "Interactive Navigation", "Project Management"],
+    "contribution": "Team Leader & Developer - Led a three-member team, captured panoramic footage across campus, designed interactive navigation scripts, and developed the web-based virtual tour experience.",
+    "githubUrl": null,
+    "demoUrl": "http://hsapp.yungu.org/tour/"
   },
   {
     "id": 4,
-    "name": "E-Commerce Product Page",
-    "introduction": "A modern e-commerce product page with image gallery, product variants, and shopping cart functionality.",
-    "description": "A fully functional e-commerce product page featuring an image gallery with zoom functionality, product variant selection (size, color), quantity selector, and add-to-cart functionality. The page includes product reviews, related products, and a responsive design optimized for mobile shopping.",
+    "name": "Destination Imagination Catapult Engineering Project",
+    "introduction": "I worked in a five-member team to build a catapult from scratch, sourcing materials such as wood and drills, and integrating sensors with a custom PCB. We solved some issues, such as ball jamming by adjusting the wooden supports and adding a timed sensor gate, assembled the mechanism from blueprints, and coordinated the demonstration.",
+    "description": "I worked in a five-member team to build a catapult from scratch, sourcing materials such as wood and drills, and integrating sensors with a custom PCB. We solved some issues, such as ball jamming by adjusting the wooden supports and adding a timed sensor gate, assembled the mechanism from blueprints, and coordinated the demonstration. Applied power tools, mechanical design, and hardware/software integration, and our project ultimately won third place nationally.",
     "screenshots": [
-      "/screenshots/ecommerce-1.png",
-      "/screenshots/ecommerce-2.png"
+      "/screenshots/catapult-cover.png",
+      "/screenshots/catapult-1.png",
+      "/screenshots/catapult-2.png",
+      "/screenshots/catapult-3.png"
     ],
-    "technologies": ["Vue.js", "JavaScript", "CSS", "Vuex"],
-    "contribution": "Frontend developer - Built product page components, implemented cart functionality, and designed responsive layouts.",
-    "githubUrl": "https://github.com/yourusername/ecommerce-product",
-    "demoUrl": "https://ecommerce-product.vercel.app"
+    "technologies": ["Power Tools", "Mechanical Design", "Hardware/Software Integration", "PCB Design", "Sensor Integration"],
+    "contribution": "Team Member & Engineer - Built catapult from scratch, sourced materials, integrated sensors with custom PCB, solved technical issues, and coordinated team demonstration.",
+    "githubUrl": null,
+    "demoUrl": null
+  },
+  {
+    "id": 5,
+    "name": "Document Progress Tracker",
+    "introduction": "A web-based document tracking system designed to help users monitor and manage the progress of various documents and applications. Built with HTML, JavaScript, and CSS to provide an intuitive interface for tracking document status, deadlines, and completion stages.",
+    "description": "Developed a document progress tracking application that enables users to efficiently monitor the status and progress of multiple documents and applications in one centralized location. The system allows users to add, update, and track documents with key information such as submission dates, deadlines, current status, and completion percentages. Features include a clean, organized interface for viewing all tracked documents, status indicators, and progress visualization. The application helps users stay organized and never miss important deadlines for applications, submissions, or document processing. Built using HTML for structure, JavaScript for interactivity and data management, and CSS for styling, demonstrating proficiency in front-end web development and user experience design.",
+    "screenshots": [
+      "/screenshots/tracker.png",
+      "/screenshots/tracker.png"
+    ],
+    "technologies": ["HTML", "JavaScript", "CSS", "Web Development", "Data Management"],
+    "contribution": "Sole developer - Designed and developed the complete document tracking system, implemented data management functionality, created user interface, and built progress tracking features.",
+    "githubUrl": "https://github.com/Ymm0709/Document-Progress-Tracker",
+    "demoUrl": null
   }
 ]
 

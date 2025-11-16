@@ -1,13 +1,12 @@
 <template>
   <div class="links">
     <div class="container">
-      <h1 class="section-title">Useful Links</h1>
+      <h1 class="section-title">{{ t('links.title') }}</h1>
       
       <section class="links-section">
-        <h2>Friends' Websites</h2>
         <div class="links-grid">
           <div 
-            v-for="link in friendLinks" 
+            v-for="link in translatedLinks" 
             :key="link.id" 
             class="link-card"
           >
@@ -15,43 +14,7 @@
             <h3>{{ link.title }}</h3>
             <p>{{ link.description }}</p>
             <a :href="link.url" target="_blank" rel="noopener noreferrer" class="link-button">
-              Visit Site →
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section class="links-section">
-        <h2>Learning Resources</h2>
-        <div class="links-grid">
-          <div 
-            v-for="link in learningResources" 
-            :key="link.id" 
-            class="link-card"
-          >
-            <div class="link-icon">{{ link.icon }}</div>
-            <h3>{{ link.title }}</h3>
-            <p>{{ link.description }}</p>
-            <a :href="link.url" target="_blank" rel="noopener noreferrer" class="link-button">
-              Visit Site →
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section class="links-section">
-        <h2>Developers I Admire</h2>
-        <div class="links-grid">
-          <div 
-            v-for="link in developerLinks" 
-            :key="link.id" 
-            class="link-card"
-          >
-            <div class="link-icon">{{ link.icon }}</div>
-            <h3>{{ link.title }}</h3>
-            <p>{{ link.description }}</p>
-            <a :href="link.url" target="_blank" rel="noopener noreferrer" class="link-button">
-              Visit Profile →
+              {{ t('links.visitSite') }}
             </a>
           </div>
         </div>
@@ -61,79 +24,84 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { injectLanguage } from '../composables/useLanguage'
 
-const friendLinks = ref([
+const { t, currentLanguage } = injectLanguage()
+
+const allLinks = ref([
   {
     id: 1,
-    title: 'Friend\'s Portfolio',
-    description: 'A fellow developer\'s amazing portfolio showcasing their projects and skills.',
-    url: 'https://example.com',
-    icon: '👨‍💻'
+    titleKey: 'link1Title',
+    descKey: 'link1Desc',
+    url: 'https://github.com',
+    icon: '💻'
   },
   {
     id: 2,
-    title: 'Colleague\'s Blog',
-    description: 'Interesting tech blog with insightful articles about web development.',
-    url: 'https://example.com',
+    titleKey: 'link2Title',
+    descKey: 'link2Desc',
+    url: 'https://eric.mojalab.cn/',
     icon: '📝'
-  }
-])
-
-const learningResources = ref([
+  },
   {
-    id: 1,
-    title: 'MDN Web Docs',
-    description: 'Comprehensive documentation for web technologies including HTML, CSS, and JavaScript.',
+    id: 3,
+    titleKey: 'link3Title',
+    descKey: 'link3Desc',
     url: 'https://developer.mozilla.org',
     icon: '📚'
   },
   {
-    id: 2,
-    title: 'Vue.js Official Docs',
-    description: 'Official documentation and guides for Vue.js framework.',
+    id: 4,
+    titleKey: 'link4Title',
+    descKey: 'link4Desc',
+    url: 'https://www.manutd.com',
+    icon: '⚽'
+  },
+  {
+    id: 5,
+    titleKey: 'link5Title',
+    descKey: 'link5Desc',
+    url: 'https://www.nba.com/clippers',
+    icon: '🏀'
+  },
+  {
+    id: 6,
+    titleKey: 'link6Title',
+    descKey: 'link6Desc',
     url: 'https://vuejs.org',
     icon: '🟢'
   },
   {
-    id: 3,
-    title: 'freeCodeCamp',
-    description: 'Free online coding bootcamp with interactive lessons and projects.',
+    id: 7,
+    titleKey: 'link7Title',
+    descKey: 'link7Desc',
     url: 'https://www.freecodecamp.org',
     icon: '🎓'
   },
   {
-    id: 4,
-    title: 'Stack Overflow',
-    description: 'Q&A platform for programmers to ask questions and share knowledge.',
-    url: 'https://stackoverflow.com',
-    icon: '💬'
+    id: 8,
+    titleKey: 'link8Title',
+    descKey: 'link8Desc',
+    url: 'https://www.instagram.com',
+    icon: '📷'
+  },
+  {
+    id: 9,
+    titleKey: 'link9Title',
+    descKey: 'link9Desc',
+    url: 'https://www.youtube.com',
+    icon: '📺'
   }
 ])
 
-const developerLinks = ref([
-  {
-    id: 1,
-    title: 'Evan You',
-    description: 'Creator of Vue.js and Vite. Inspiring open-source contributor.',
-    url: 'https://github.com/yyx990803',
-    icon: '⭐'
-  },
-  {
-    id: 2,
-    title: 'Dan Abramov',
-    description: 'Co-author of Redux and Create React App. Great educator in React community.',
-    url: 'https://github.com/gaearon',
-    icon: '⚛️'
-  },
-  {
-    id: 3,
-    title: 'Addy Osmani',
-    description: 'Engineering manager and author. Known for web performance optimization.',
-    url: 'https://github.com/addyosmani',
-    icon: '🚀'
-  }
-])
+const translatedLinks = computed(() => {
+  return allLinks.value.map(link => ({
+    ...link,
+    title: t(`links.${link.titleKey}`),
+    description: t(`links.${link.descKey}`)
+  }))
+})
 </script>
 
 <style scoped>

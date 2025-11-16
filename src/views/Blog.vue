@@ -1,15 +1,15 @@
 <template>
   <div class="blog">
     <div class="container">
-      <h1 class="section-title">Blog</h1>
+      <h1 class="section-title">{{ t('blog.title') }}</h1>
       
       <div v-if="loading" class="loading">
-        <p>Loading blog posts...</p>
+        <p>{{ t('blog.loading') }}</p>
       </div>
 
       <div v-else-if="error" class="error">
-        <p>Error loading blog posts: {{ error }}</p>
-        <button @click="fetchPosts" class="btn">Try Again</button>
+        <p>{{ t('blog.error') }} {{ error }}</p>
+        <button @click="fetchPosts" class="btn">{{ t('blog.tryAgain') }}</button>
       </div>
 
       <div v-else class="blog-posts">
@@ -37,8 +37,8 @@
             </span>
           </div>
           <div class="blog-footer">
-            <span class="blog-author">By {{ post.author }}</span>
-            <span class="read-more">Read more →</span>
+            <span class="blog-author">{{ t('blog.by') }} {{ post.author }}</span>
+            <span class="read-more">{{ t('blog.readMore') }}</span>
           </div>
         </article>
       </div>
@@ -47,10 +47,13 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, onMounted, watch, nextTick } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
+import { injectLanguage } from '../composables/useLanguage'
 
 const router = useRouter()
+const route = useRoute()
+const { currentLanguage, t } = injectLanguage()
 const posts = ref([])
 const loading = ref(true)
 const error = ref(null)
@@ -59,19 +62,29 @@ const fetchPosts = async () => {
   try {
     loading.value = true
     error.value = null
-    const response = await fetch('/data/blog.json')
+    // 根据当前语言加载对应的 JSON 文件
+    const lang = currentLanguage.value
+    const filename = lang === 'zh' ? 'blog-zh.json' : 'blog-en.json'
+    const response = await fetch(`/data/${filename}`)
     if (!response.ok) {
       throw new Error('Failed to fetch blog posts')
     }
     const data = await response.json()
     posts.value = data
+    return Promise.resolve()
   } catch (err) {
     error.value = err.message
     console.error('Error fetching blog posts:', err)
+    return Promise.reject(err)
   } finally {
     loading.value = false
   }
 }
+
+// 监听语言变化，重新加载博客文章
+watch(currentLanguage, () => {
+  fetchPosts()
+})
 
 const formatDate = (dateString) => {
   const date = new Date(dateString)
@@ -83,11 +96,37 @@ const formatDate = (dateString) => {
 }
 
 const goToPost = (id) => {
+  // 保存当前滚动位置
+  const scrollPosition = window.scrollY || window.pageYOffset || document.documentElement.scrollTop
+  sessionStorage.setItem('blogScrollPosition', scrollPosition.toString())
   router.push(`/blog/${id}`)
 }
 
+const restoreScrollPosition = () => {
+  const savedPosition = sessionStorage.getItem('blogScrollPosition')
+  if (savedPosition) {
+    nextTick(() => {
+      setTimeout(() => {
+        window.scrollTo(0, parseInt(savedPosition))
+        sessionStorage.removeItem('blogScrollPosition')
+      }, 100)
+    })
+  }
+}
+
 onMounted(() => {
-  fetchPosts()
+  fetchPosts().then(() => {
+    restoreScrollPosition()
+  })
+})
+
+// 监听路由变化，当从详情页返回时恢复滚动位置
+watch(() => route.name, (newName) => {
+  if (newName === 'Blog') {
+    nextTick(() => {
+      restoreScrollPosition()
+    })
+  }
 })
 </script>
 

@@ -2,21 +2,21 @@
   <div class="blog-detail">
     <div class="container">
       <div v-if="loading" class="loading">
-        <p>Loading post...</p>
+        <p>{{ t('blog.loading') }}</p>
       </div>
 
       <div v-else-if="error" class="error">
-        <p>Error loading post: {{ error }}</p>
-        <router-link to="/blog" class="btn">Back to Blog</router-link>
+        <p>{{ t('blog.error') }} {{ error }}</p>
+        <router-link to="/blog" class="btn">{{ t('blog.back') }}</router-link>
       </div>
 
       <article v-else-if="post" class="blog-detail-content">
-        <button @click="goBack" class="back-button">← Back to Blog</button>
+        <button @click="goBack" class="back-button">← {{ t('blog.back') }}</button>
         
         <header class="blog-header">
           <h1 class="blog-title">{{ post.title }}</h1>
           <div class="blog-meta">
-            <span class="blog-author">By {{ post.author }}</span>
+            <span class="blog-author">{{ t('blog.by') }} {{ post.author }}</span>
             <span class="blog-date">{{ formatDate(post.date) }}</span>
             <span class="blog-read-time">{{ post.readTime }}</span>
           </div>
@@ -38,18 +38,20 @@
 
       <div v-else class="not-found">
         <p>Post not found</p>
-        <router-link to="/blog" class="btn">Back to Blog</router-link>
+        <router-link to="/blog" class="btn">{{ t('blog.back') }}</router-link>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
+import { injectLanguage } from '../composables/useLanguage'
 
 const router = useRouter()
 const route = useRoute()
+const { currentLanguage, t } = injectLanguage()
 const post = ref(null)
 const loading = ref(true)
 const error = ref(null)
@@ -58,7 +60,10 @@ const fetchPost = async () => {
   try {
     loading.value = true
     error.value = null
-    const response = await fetch('/data/blog.json')
+    // 根据当前语言加载对应的 JSON 文件
+    const lang = currentLanguage.value
+    const filename = lang === 'zh' ? 'blog-zh.json' : 'blog-en.json'
+    const response = await fetch(`/data/${filename}`)
     if (!response.ok) {
       throw new Error('Failed to fetch blog posts')
     }
@@ -78,6 +83,11 @@ const fetchPost = async () => {
     loading.value = false
   }
 }
+
+// 监听语言变化，重新加载博客文章
+watch(currentLanguage, () => {
+  fetchPost()
+})
 
 const formatDate = (dateString) => {
   const date = new Date(dateString)
@@ -206,27 +216,34 @@ onMounted(() => {
 
 .blog-body {
   line-height: 1.8;
-  color: var(--text-light);
 }
 
 .blog-content {
   font-size: 1.1rem;
+  color: var(--text-light);
 }
 
 .blog-content :deep(p) {
   margin-bottom: 1.5rem;
+  color: var(--text-light);
+  font-size: 1.1rem;
+  line-height: 1.8;
 }
 
 .blog-content :deep(h2) {
   color: var(--primary-color);
   font-size: 2rem;
+  font-weight: 700;
   margin: 2rem 0 1rem;
+  line-height: 1.3;
 }
 
 .blog-content :deep(h3) {
   color: var(--primary-color);
   font-size: 1.5rem;
+  font-weight: 600;
   margin: 1.5rem 0 1rem;
+  line-height: 1.4;
 }
 
 .blog-content :deep(code) {

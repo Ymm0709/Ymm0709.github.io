@@ -1,15 +1,15 @@
 <template>
   <div class="projects">
     <div class="container">
-      <h1 class="section-title">My Projects</h1>
+      <h1 class="section-title">{{ t('projects.title') }}</h1>
       
       <div v-if="loading" class="loading">
-        <p>Loading projects...</p>
+        <p>{{ t('projects.loading') }}</p>
       </div>
 
       <div v-else-if="error" class="error">
-        <p>Error loading projects: {{ error }}</p>
-        <button @click="fetchProjects" class="btn">Try Again</button>
+        <p>{{ t('projects.error') }} {{ error }}</p>
+        <button @click="fetchProjects" class="btn">{{ t('projects.tryAgain') }}</button>
       </div>
 
       <div v-else class="projects-grid">
@@ -20,34 +20,37 @@
           @click="goToProject(project.id)"
         >
           <div class="project-image">
-            <div class="image-placeholder">
+            <img 
+              v-if="project.screenshots && project.screenshots.length > 0" 
+              :src="project.screenshots[0]" 
+              :alt="project.name"
+              class="project-cover-image"
+            />
+            <div v-else class="image-placeholder">
               <span>📁</span>
             </div>
           </div>
           <div class="project-content">
             <h2>{{ project.name }}</h2>
-            <p class="project-intro">{{ project.introduction }}</p>
             <div class="project-tech">
               <span 
-                v-for="tech in project.technologies.slice(0, 4)" 
+                v-for="tech in project.technologies" 
                 :key="tech" 
                 class="tech-tag"
               >
-                {{ tech }}
-              </span>
-              <span v-if="project.technologies.length > 4" class="tech-tag">
-                +{{ project.technologies.length - 4 }}
+                {{ translateTechnology(tech) }}
               </span>
             </div>
             <div class="project-links">
               <a 
+                v-if="project.githubUrl"
                 :href="project.githubUrl" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 @click.stop
-                class="project-link"
+                class="project-link github-button"
               >
-                GitHub →
+                {{ t('projects.github') }}
               </a>
               <a 
                 v-if="project.demoUrl"
@@ -55,9 +58,9 @@
                 target="_blank" 
                 rel="noopener noreferrer"
                 @click.stop
-                class="project-link"
+                :class="project.githubUrl ? 'project-link' : 'project-link github-button'"
               >
-                Live Demo →
+                {{ t('projects.demo') }}
               </a>
             </div>
           </div>
@@ -68,10 +71,13 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, onMounted, watch, nextTick } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
+import { injectLanguage } from '../composables/useLanguage'
 
 const router = useRouter()
+const route = useRoute()
+const { currentLanguage, t, translateTechnology } = injectLanguage()
 const projects = ref([])
 const loading = ref(true)
 const error = ref(null)
@@ -80,26 +86,62 @@ const fetchProjects = async () => {
   try {
     loading.value = true
     error.value = null
-    const response = await fetch('/data/projects.json')
+    // 根据当前语言加载对应的 JSON 文件
+    const lang = currentLanguage.value
+    const filename = lang === 'zh' ? 'projects-zh.json' : 'projects-en.json'
+    const response = await fetch(`/data/${filename}`)
     if (!response.ok) {
       throw new Error('Failed to fetch projects')
     }
     const data = await response.json()
     projects.value = data
+    return Promise.resolve()
   } catch (err) {
     error.value = err.message
     console.error('Error fetching projects:', err)
+    return Promise.reject(err)
   } finally {
     loading.value = false
   }
 }
 
+// 监听语言变化，重新加载项目
+watch(currentLanguage, () => {
+  fetchProjects()
+})
+
 const goToProject = (id) => {
+  // 保存当前滚动位置
+  const scrollPosition = window.scrollY || window.pageYOffset || document.documentElement.scrollTop
+  sessionStorage.setItem('projectsScrollPosition', scrollPosition.toString())
   router.push(`/projects/${id}`)
 }
 
+const restoreScrollPosition = () => {
+  const savedPosition = sessionStorage.getItem('projectsScrollPosition')
+  if (savedPosition) {
+    nextTick(() => {
+      setTimeout(() => {
+        window.scrollTo(0, parseInt(savedPosition))
+        sessionStorage.removeItem('projectsScrollPosition')
+      }, 100)
+    })
+  }
+}
+
 onMounted(() => {
-  fetchProjects()
+  fetchProjects().then(() => {
+    restoreScrollPosition()
+  })
+})
+
+// 监听路由变化，当从详情页返回时恢复滚动位置
+watch(() => route.name, (newName) => {
+  if (newName === 'Projects') {
+    nextTick(() => {
+      restoreScrollPosition()
+    })
+  }
 })
 </script>
 
@@ -152,6 +194,13 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+}
+
+.project-cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .image-placeholder {
@@ -215,6 +264,24 @@ onMounted(() => {
 .project-link:hover {
   opacity: 0.8;
   text-decoration: underline;
+}
+
+.github-button {
+  background: var(--primary-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s;
+}
+
+.github-button:hover {
+  opacity: 1;
+  text-decoration: none;
+  background: rgba(6, 182, 212, 0.9);
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+  transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {

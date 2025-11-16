@@ -1,0 +1,75 @@
+[
+  {
+    "id": 1,
+    "name": "足球运动员抽卡游戏",
+    "introduction": "通过编写Java程序，自主设计了一款足球运动员抽卡游戏，优化代码效率，掌握Java基本语法和算法思维。",
+    "description": "我通过编写Java程序，自主设计了一款\"足球运动员抽卡\"游戏。我优化代码效率，使用不同的方法做到同一种目的，同时让代码运行更流畅。掌握了Java的基本语法、编写逻辑、算法思维和一些method的运用。提高了编程能力，并在现实问题中使用Java语言编写。将Java应用到更复杂的项目，如数据分析、人工智能或自动化，提高解决问题的能力。",
+    "screenshots": [
+      "/screenshots/soccer-card-cover.png"
+    ],
+    "technologies": ["Java", "Algorithms", "Data Structures", "Object-Oriented Programming"],
+    "contribution": "独立开发者 - 设计并实现了随机抽卡机制，通过多种方法优化代码效率，掌握了算法和数据结构，确保程序流畅运行。",
+    "githubUrl": "https://github.com/Ymm0709/Soccer-Card-Draw-Game",
+    "demoUrl": null
+  },
+  {
+    "id": 2,
+    "name": "五子棋创新",
+    "introduction": "一个Gomoku游戏的改编，具有独特创新：被困住的棋子可以转换对手的棋子。这个项目展示了我创新思维、策略游戏设计、复杂游戏逻辑建模能力和扎实的面向对象编程技能。",
+    "description": "一个用Java构建的经典五子棋游戏的创新改编。两名玩家在15×15的棋盘上轮流放置黑白棋子，目标是在水平、垂直或对角线上形成连续的五子连线。创新特色：如果你将对手的棋子困在你的两个棋子之间，它会被捕获并转换为你的颜色。这个独特的机制为传统游戏玩法增加了策略深度。该项目展示了高级面向对象编程原则、复杂的游戏状态管理和使用Java Swing实现的交互式GUI。作为游戏设计师和程序员，我设计了游戏规则，实现了核心游戏逻辑、胜利条件检测和棋子转换系统。",
+    "screenshots": [
+      "/screenshots/battle-game-cover.png",
+      "/screenshots/Code.png",
+      "/screenshots/UML.png"
+    ],
+    "technologies": ["Java", "面向对象编程", "游戏设计", "GUI开发", "算法设计"],
+    "contribution": "游戏设计师 & 程序员 - 设计游戏机制，实现核心游戏逻辑包括胜利检测和棋子转换系统，并开发了交互式GUI。",
+    "githubUrl": "https://github.com/Ymm0709/Battle-Game",
+    "demoUrl": null
+  },
+  {
+    "id": 3,
+    "name": "校园全景图项目",
+    "introduction": "领导三人团队使用Pano2VR和网页编程开发360°虚拟校园导览。使用360°相机拍摄校园每个角落的全景画面，设计脚本和交互式导航以创造更好的用户体验。",
+    "description": "为了创建我们学校全面的360°全景视图，我们旨在通过沉浸式视觉体验生动地展示校园环境。这个项目将支持虚拟导览，让学生、家长和访客能够从任何地方探索学校，获得对其布局、设施和氛围的真实感受。通过整合高质量的全景图像和交互式导航，我们希望增强参与度，提高可访问性，并提供对校园文化和环境的更直观理解。",
+    "screenshots": [
+      "/screenshots/Panoramic view of the playground.png",
+      "/screenshots/panoramic video.mov"
+    ],
+    "technologies": ["Pano2VR", "网页编程", "360°相机", "交互式导航", "项目管理"],
+    "contribution": "团队负责人 & 开发者 - 领导三人团队，拍摄校园全景画面，设计交互式导航脚本，并开发基于网页的虚拟导览体验。",
+    "githubUrl": null,
+    "demoUrl": "http://hsapp.yungu.org/tour/"
+  },
+  {
+    "id": 4,
+    "name": "DI 弹射器工程项目",
+    "introduction": "我在一个五人团队中工作，从零开始建造弹射器，采购木材和钻头等材料，并将传感器与定制PCB集成。我们解决了一些问题，例如通过调整木制支撑和添加定时传感器门来解决球卡住的问题，从蓝图组装机制，并协调演示。",
+    "description": "我在一个五人团队中工作，从零开始建造弹射器，采购木材和钻头等材料，并将传感器与定制PCB集成。我们解决了一些问题，例如通过调整木制支撑和添加定时传感器门来解决球卡住的问题，从蓝图组装机制，并协调演示。应用了电动工具、机械设计和硬件/软件集成，我们的项目最终在全国比赛中获得第三名。",
+    "screenshots": [
+      "/screenshots/catapult-cover.png",
+      "/screenshots/catapult-1.png",
+      "/screenshots/catapult-2.png",
+      "/screenshots/catapult-3.png"
+    ],
+    "technologies": ["Power Tools", "Mechanical Design", "Hardware/Software Integration", "PCB Design", "Sensor Integration"],
+    "contribution": "团队成员 & 工程师 - 从零开始建造弹射器，采购材料，将传感器与定制PCB集成，解决技术问题，并协调团队演示。",
+    "githubUrl": null,
+    "demoUrl": null
+  },
+  {
+    "id": 5,
+    "name": "文书进度追踪系统",
+    "introduction": "一个基于网页的文书追踪系统，旨在帮助用户监控和管理各种文件和申请的进度。使用HTML、JavaScript和CSS构建，提供直观的界面来追踪文件状态、截止日期和完成阶段。",
+    "description": "开发了一个文书进度追踪应用程序，使用户能够在一个集中位置高效地监控多个文件和申请的状态和进度。该系统允许用户添加、更新和追踪文件，包括提交日期、截止日期、当前状态和完成百分比等关键信息。功能包括用于查看所有已追踪文件的清晰、有序的界面、状态指示器和进度可视化。该应用程序帮助用户保持组织有序，永远不会错过申请、提交或文件处理的重要截止日期。使用HTML构建结构，JavaScript实现交互性和数据管理，CSS进行样式设计，展示了在前端网页开发和用户体验设计方面的熟练程度。",
+    "screenshots": [
+      "/screenshots/tracker.png",
+      "/screenshots/tracker.png"
+    ],
+    "technologies": ["HTML", "JavaScript", "CSS", "Web Development", "Data Management"],
+    "contribution": "独立开发者 - 设计并开发了完整的文书追踪系统，实现了数据管理功能，创建了用户界面，并构建了进度追踪功能。",
+    "githubUrl": "https://github.com/Ymm0709/Document-Progress-Tracker",
+    "demoUrl": null
+  }
+]
+

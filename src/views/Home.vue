@@ -5,43 +5,65 @@
         <div class="hero-content">
           <div class="avatar-container">
             <div class="avatar">
-              <span class="avatar-initials">🐑</span>
+              <img src="/主页照片.png" alt="Profile Photo" class="avatar-image" />
             </div>
           </div>
-          <h1 class="hero-title">Welcome to My Portfolio</h1>
-          <p class="hero-subtitle">Hello! I'm a passionate developer who loves building amazing web experiences.</p>
-          <p class="hero-description">
-            I'm dedicated to creating innovative solutions and learning new technologies. 
-            This website showcases my projects, skills, and thoughts on web development.
-          </p>
-          <div class="hero-links">
-            <router-link to="/projects" class="btn">View Projects</router-link>
-            <router-link to="/blog" class="btn btn-secondary">Read Blog</router-link>
-            <router-link to="/about" class="btn btn-secondary">Learn More</router-link>
+          <h1 class="hero-title">{{ t('home.title') }}</h1>
+          <p class="hero-subtitle">{{ t('home.subtitle') }}</p>
+          <div class="contact-links">
+            <button @click="showEmailModal = true" class="contact-link" title="Email">
+              <svg class="contact-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="contact-link-text">Email</span>
+            </button>
+            <a href="https://github.com/Ymm0709" target="_blank" rel="noopener noreferrer" class="contact-link" title="GitHub">
+              <svg class="contact-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="contact-link-text">GitHub</span>
+            </a>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Email Modal -->
+    <div v-if="showEmailModal" class="modal-overlay" @click="showEmailModal = false">
+      <div class="modal-content" @click.stop>
+        <button class="modal-close" @click="showEmailModal = false">&times;</button>
+        <div class="modal-body">
+          <svg class="modal-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3 class="modal-title">Email</h3>
+          <p class="modal-email" @click="copyEmail">yung230630047@126.com</p>
+          <p class="modal-hint">点击邮箱地址复制</p>
+        </div>
+      </div>
+    </div>
+
     <section class="quick-links">
       <div class="container">
-        <h2 class="section-title">Quick Navigation</h2>
+        <h2 class="section-title">{{ t('home.quickNav') }}</h2>
         <div class="links-grid">
           <router-link to="/about" class="link-card">
-            <h3>About Me</h3>
-            <p>Learn more about my background, interests, and aspirations</p>
+            <h3>{{ t('home.aboutMe') }}</h3>
+            <p>{{ t('home.aboutMeDesc') }}</p>
           </router-link>
           <router-link to="/skills" class="link-card">
-            <h3>Skills & Resume</h3>
-            <p>View my technical skills and educational background</p>
+            <h3>{{ t('home.skills') }}</h3>
+            <p>{{ t('home.skillsDesc') }}</p>
           </router-link>
           <router-link to="/projects" class="link-card">
-            <h3>Projects</h3>
-            <p>Explore my portfolio of projects and GitHub repositories</p>
+            <h3>{{ t('home.projects') }}</h3>
+            <p>{{ t('home.projectsDesc') }}</p>
           </router-link>
           <router-link to="/blog" class="link-card">
-            <h3>Blog</h3>
-            <p>Read my thoughts and experiences in web development</p>
+            <h3>{{ t('home.blog') }}</h3>
+            <p>{{ t('home.blogDesc') }}</p>
           </router-link>
         </div>
       </div>
@@ -50,6 +72,23 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
+import { injectLanguage } from '../composables/useLanguage'
+
+const { t } = injectLanguage()
+const showEmailModal = ref(false)
+
+const copyEmail = async () => {
+  const email = 'yung230630047@126.com'
+  try {
+    await navigator.clipboard.writeText(email)
+    // 可以添加一个提示，表示已复制
+    alert('邮箱地址已复制到剪贴板！')
+  } catch (err) {
+    // 如果复制失败，可以回退到其他方法
+    console.error('复制失败:', err)
+  }
+}
 </script>
 
 <style scoped>
@@ -92,13 +131,13 @@
 }
 
 .avatar {
-  width: 150px;
-  height: 150px;
+  width: 220px;
+  height: 220px;
   margin: 0 auto;
   border-radius: 50%;
   overflow: hidden;
-  border: 4px solid var(--primary-color);
-  box-shadow: 0 0 30px rgba(6, 182, 212, 0.5), var(--shadow);
+  border: 5px solid var(--primary-color);
+  box-shadow: 0 0 40px rgba(6, 182, 212, 0.6), var(--shadow);
   background: var(--bg-secondary);
   display: flex;
   align-items: center;
@@ -112,11 +151,11 @@
   transform: scale(1.05);
 }
 
-.avatar-initials {
-  font-size: 3rem;
-  font-weight: bold;
-  color: var(--primary-color);
-  text-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .hero-title {
@@ -136,22 +175,173 @@
   z-index: 1;
 }
 
-.hero-description {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-  color: var(--text-light);
-  line-height: 1.8;
-  position: relative;
-  z-index: 1;
-}
-
-.hero-links {
+.contact-links {
   display: flex;
-  gap: 1rem;
+  gap: 2.5rem;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   position: relative;
   z-index: 1;
+  margin-top: 2.5rem;
+}
+
+.contact-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--text-light);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  background: rgba(6, 182, 212, 0.1);
+  border: 2px solid rgba(6, 182, 212, 0.3);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  min-width: 120px;
+}
+
+.contact-link:hover {
+  color: var(--primary-color);
+  transform: translateY(-5px);
+  background: rgba(6, 182, 212, 0.2);
+  border-color: var(--primary-color);
+  box-shadow: 0 5px 20px rgba(6, 182, 212, 0.4);
+}
+
+.contact-icon {
+  width: 40px;
+  height: 40px;
+  stroke: currentColor;
+  transition: all 0.3s ease;
+}
+
+.contact-link-text {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: currentColor;
+}
+
+.contact-link:hover .contact-icon {
+  filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.5));
+}
+
+/* Email Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: var(--shadow-hover);
+  position: relative;
+  animation: slideUp 0.3s ease;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  color: var(--text-light);
+  font-size: 2rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: all 0.3s ease;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.modal-close:hover {
+  color: var(--primary-color);
+  background: rgba(6, 182, 212, 0.1);
+  transform: rotate(90deg);
+}
+
+.modal-body {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.modal-icon {
+  width: 48px;
+  height: 48px;
+  color: var(--primary-color);
+  margin: 0 auto 1rem;
+  stroke: currentColor;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.modal-email {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  margin: 1rem 0;
+  padding: 0.75rem 1.5rem;
+  background: rgba(6, 182, 212, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  word-break: break-all;
+}
+
+.modal-email:hover {
+  background: rgba(6, 182, 212, 0.2);
+  transform: scale(1.05);
+}
+
+.modal-hint {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .quick-links {
@@ -208,18 +398,27 @@
     font-size: 1.2rem;
   }
 
-  .hero-description {
-    font-size: 1rem;
+  .contact-links {
+    gap: 1.5rem;
   }
 
-  .hero-links {
-    flex-direction: column;
-    align-items: center;
+  .contact-link {
+    padding: 0.75rem 1rem;
+    min-width: 100px;
   }
 
-  .hero-links .btn {
-    width: 100%;
-    max-width: 300px;
+  .contact-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .contact-link-text {
+    font-size: 0.8rem;
+  }
+
+  .avatar {
+    width: 180px;
+    height: 180px;
   }
 
   .links-grid {

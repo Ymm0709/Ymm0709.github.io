@@ -2,16 +2,16 @@
   <div class="project-detail">
     <div class="container">
       <div v-if="loading" class="loading">
-        <p>Loading project...</p>
+        <p>{{ t('projects.detail.loading') }}</p>
       </div>
 
       <div v-else-if="error" class="error">
-        <p>Error loading project: {{ error }}</p>
-        <router-link to="/projects" class="btn">Back to Projects</router-link>
+        <p>{{ t('projects.detail.error') }} {{ error }}</p>
+        <router-link to="/projects" class="btn">{{ t('projects.detail.back') }}</router-link>
       </div>
 
       <div v-else-if="project" class="project-detail-content">
-        <button @click="goBack" class="back-button">← Back to Projects</button>
+        <button @click="goBack" class="back-button">← {{ t('projects.detail.back') }}</button>
         
         <h1 class="project-title">{{ project.name }}</h1>
         
@@ -19,21 +19,8 @@
           <p class="project-intro">{{ project.introduction }}</p>
         </div>
 
-        <div class="project-screenshots" v-if="project.screenshots">
-          <h2>Screenshots</h2>
-          <div class="screenshots-grid">
-            <div 
-              v-for="(screenshot, index) in project.screenshots" 
-              :key="index" 
-              class="screenshot-placeholder"
-            >
-              <span>Image {{ index + 1 }}</span>
-            </div>
-          </div>
-        </div>
-
         <div class="project-section">
-          <h2>Description</h2>
+          <h2>{{ t('projects.detail.description') }}</h2>
           <p class="project-description">{{ project.description }}</p>
         </div>
 
@@ -45,26 +32,44 @@
               :key="tech" 
               class="tech-badge"
             >
-              {{ tech }}
+              {{ translateTechnology(tech) }}
             </span>
           </div>
         </div>
 
-        <div class="project-section">
-          <h2>My Contribution</h2>
-          <p>{{ project.contribution }}</p>
+        <div class="project-screenshots" v-if="project.screenshots && project.screenshots.length > 1">
+          <h2>{{ t('projects.detail.screenshots') }}</h2>
+          <div class="screenshots-grid">
+            <img 
+              v-for="(screenshot, index) in project.screenshots.slice(1).filter(s => !isVideoFile(s))" 
+              :key="`img-${index}`"
+              :src="screenshot" 
+              :alt="`Screenshot ${index + 1}`"
+              class="screenshot-image"
+            />
+            <video 
+              v-for="(screenshot, index) in project.screenshots.slice(1).filter(s => isVideoFile(s))" 
+              :key="`video-${index}`"
+              :src="screenshot" 
+              controls
+              class="screenshot-image"
+            >
+              Your browser does not support the video tag.
+            </video>
+          </div>
         </div>
 
-        <div class="project-links-section">
-          <h2>Links</h2>
+        <div class="project-links-section" v-if="project.githubUrl || project.demoUrl">
+          <h2>{{ t('projects.detail.links') }}</h2>
           <div class="project-links">
             <a 
+              v-if="project.githubUrl"
               :href="project.githubUrl" 
               target="_blank" 
               rel="noopener noreferrer"
               class="btn"
             >
-              View on GitHub
+              {{ t('projects.detail.viewGithub') }}
             </a>
             <a 
               v-if="project.demoUrl"
@@ -73,35 +78,46 @@
               rel="noopener noreferrer"
               class="btn btn-secondary"
             >
-              Live Demo
+              {{ t('projects.detail.liveDemo') }}
             </a>
           </div>
         </div>
       </div>
 
       <div v-else class="not-found">
-        <p>Project not found</p>
-        <router-link to="/projects" class="btn">Back to Projects</router-link>
+        <p>{{ t('projects.detail.notFound') }}</p>
+        <router-link to="/projects" class="btn">{{ t('projects.detail.back') }}</router-link>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
+import { injectLanguage } from '../composables/useLanguage'
 
 const router = useRouter()
 const route = useRoute()
+const { currentLanguage, t, translateTechnology } = injectLanguage()
 const project = ref(null)
 const loading = ref(true)
 const error = ref(null)
+
+const isVideoFile = (url) => {
+  const videoExtensions = ['.mov', '.mp4', '.webm', '.ogg', '.avi', '.mkv']
+  return videoExtensions.some(ext => url.toLowerCase().endsWith(ext))
+}
+
 
 const fetchProject = async () => {
   try {
     loading.value = true
     error.value = null
-    const response = await fetch('/data/projects.json')
+    // 根据当前语言加载对应的 JSON 文件
+    const lang = currentLanguage.value
+    const filename = lang === 'zh' ? 'projects-zh.json' : 'projects-en.json'
+    const response = await fetch(`/data/${filename}`)
     if (!response.ok) {
       throw new Error('Failed to fetch projects')
     }
@@ -121,6 +137,11 @@ const fetchProject = async () => {
     loading.value = false
   }
 }
+
+// 监听语言变化，重新加载项目
+watch(currentLanguage, () => {
+  fetchProject()
+})
 
 const goBack = () => {
   router.push('/projects')
@@ -260,16 +281,17 @@ onMounted(() => {
   gap: 1rem;
 }
 
-.screenshot-placeholder {
+.screenshot-image {
   width: 100%;
-  height: 200px;
-  background: var(--bg-secondary);
+  max-width: 100%;
+  height: auto;
   border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-light);
-  font-weight: 500;
+  box-shadow: var(--shadow);
+  object-fit: contain;
+}
+
+video.screenshot-image {
+  display: block;
 }
 
 .project-links-section {
