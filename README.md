@@ -125,6 +125,30 @@ Edit `src/style.css` to customize colors, fonts, and other styles. CSS variables
 
 ### GitHub Pages
 
+This project is configured for automatic deployment to GitHub Pages using GitHub Actions.
+
+#### Option 1: Deploy to `username.github.io` (Recommended)
+
+1. Rename your repository to `Ymm0709.github.io` (replace `Ymm0709` with your GitHub username)
+2. The workflow will automatically deploy on every push to `main` branch
+3. Enable GitHub Pages in repository settings:
+   - Go to Settings → Pages
+   - Under "Source", select "GitHub Actions"
+4. Your site will be available at `https://Ymm0709.github.io`
+
+#### Option 2: Deploy to Project Pages
+
+If you want to keep the repository name as `personal-website`:
+
+1. Update `vite.config.js` to set `base: '/personal-website/'`
+2. The workflow will automatically deploy on every push to `main` branch
+3. Enable GitHub Pages in repository settings:
+   - Go to Settings → Pages
+   - Under "Source", select "GitHub Actions"
+4. Your site will be available at `https://Ymm0709.github.io/personal-website/`
+
+#### Manual Deployment (Alternative)
+
 1. Build the project: `npm run build`
 2. Push the `dist` folder contents to the `gh-pages` branch
 3. Enable GitHub Pages in repository settings
