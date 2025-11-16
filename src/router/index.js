@@ -75,5 +75,11 @@ const router = createRouter({
   }
 })
 
+// 设置默认标题
+router.beforeEach((to, from, next) => {
+  document.title = 'Yung\'s Portfolio'
+  next()
+})
+
 export default router
 
