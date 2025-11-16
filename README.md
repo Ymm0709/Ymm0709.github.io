@@ -125,33 +125,49 @@ Edit `src/style.css` to customize colors, fonts, and other styles. CSS variables
 
 ### GitHub Pages
 
-This project is configured for automatic deployment to GitHub Pages using GitHub Actions.
+本项目已配置为使用 GitHub Actions 自动部署到 GitHub Pages。
 
-#### Option 1: Deploy to `username.github.io` (Recommended)
+#### 部署到 `username.github.io`（当前配置）
 
-1. Rename your repository to `Ymm0709.github.io` (replace `Ymm0709` with your GitHub username)
-2. The workflow will automatically deploy on every push to `main` branch
-3. Enable GitHub Pages in repository settings:
-   - Go to Settings → Pages
-   - Under "Source", select "GitHub Actions"
-4. Your site will be available at `https://Ymm0709.github.io`
+当前项目已配置为部署到 `https://Ymm0709.github.io/` 格式的网址。
 
-#### Option 2: Deploy to Project Pages
+**重要提示：** 要实现 `username.github.io` 格式的网址，需要将仓库重命名为 `Ymm0709.github.io`。
 
-If you want to keep the repository name as `personal-website`:
+**部署步骤：**
 
-1. Update `vite.config.js` to set `base: '/personal-website/'`
-2. The workflow will automatically deploy on every push to `main` branch
-3. Enable GitHub Pages in repository settings:
-   - Go to Settings → Pages
-   - Under "Source", select "GitHub Actions"
-4. Your site will be available at `https://Ymm0709.github.io/personal-website/`
+1. **重命名仓库**（如果还没有）：
+   - 前往 GitHub 仓库页面
+   - 点击 Settings（设置）
+   - 在页面底部找到 "Repository name"（仓库名称）
+   - 将仓库名改为 `Ymm0709.github.io`（将 `Ymm0709` 替换为你的 GitHub 用户名）
+   - 点击 Rename（重命名）
 
-#### Manual Deployment (Alternative)
+2. **启用 GitHub Pages**：
+   - 在仓库 Settings（设置）中，找到 Pages（页面）选项
+   - 在 "Source"（源）下，选择 "GitHub Actions"
+   - 保存设置
 
-1. Build the project: `npm run build`
-2. Push the `dist` folder contents to the `gh-pages` branch
-3. Enable GitHub Pages in repository settings
+3. **推送代码**：
+   ```bash
+   git add .
+   git commit -m "Configure GitHub Pages deployment"
+   git push origin main
+   ```
+
+4. **等待部署完成**：
+   - 前往仓库的 Actions（操作）标签页
+   - 查看部署工作流的状态
+   - 部署完成后，你的网站将在 `https://Ymm0709.github.io` 可用
+
+**注意：** 首次部署可能需要几分钟时间。部署完成后，每次推送到 `main` 分支都会自动触发新的部署。
+
+#### 部署到项目页面（可选）
+
+如果你想保持当前仓库名称，可以部署到项目页面：
+
+1. 更新 `vite.config.js` 中的 `base` 为 `/仓库名/`
+2. 按照上述步骤启用 GitHub Pages
+3. 网站将可在 `https://Ymm0709.github.io/仓库名/` 访问
 
 ## Documentation
 
