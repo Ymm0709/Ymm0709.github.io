@@ -1,8 +1,8 @@
 # REPORT.md
 
-## Project Overview
+## Project Overview（项目概述）
 
-This is a personal portfolio website built with Vue.js and Vite. The website showcases projects, skills, blog posts, and personal information in a modern, responsive design. All dynamic content is loaded from JSON files, making it easy to update without modifying code.
+这是一个使用 Vue.js 与 Vite 构建的个人作品集网站。网站以现代、响应式设计呈现项目、技能、博客文章以及个人信息，支持双语。所有动态内容均来自 JSON 文件。
 
 ## Project Structure
 
@@ -38,237 +38,235 @@ personal-website-development/
 └── REPORT.md                  # This file
 ```
 
-## File Descriptions
+# 文件说明（File Descriptions）
 
-### Core Files
+## 核心文件（Core Files）
 
-#### `index.html`
-- Main HTML file that serves as the entry point for the application
-- Contains the root `<div id="app">` where Vue mounts
-- Includes meta tags for responsive design
+### `index.html`
 
-#### `src/main.js`
-- Application entry point
-- Imports Vue, App component, router, and global styles
-- Creates and mounts the Vue application with router support
+* 应用程序的入口 HTML 文件
+* 包含 Vue 挂载点 `<div id="app">`
+* 包含响应式设计的 meta 标签
 
-#### `src/App.vue`
-- Root component of the application
-- Contains the Navbar component and router-view for page rendering
-- Includes footer and main content area
-- Sets up the overall layout structure
+### `src/main.js`
 
-#### `vite.config.js`
-- Vite build tool configuration
-- Configures Vue plugin for processing .vue files
-- Sets up development server and build options
+* 应用程序入口文件
+* 引入 Vue、App 组件、路由与全局样式
+* 创建并挂载 Vue 应用（包含路由支持）
 
-### Router Configuration
+### `src/App.vue`
 
-#### `src/router/index.js`
-- Defines all application routes using Vue Router
-- Sets up static routes for Home, About, Skills, and Links pages
-- Configures dynamic routes for Projects and Blog detail pages using `:id` parameter
-- Uses HTML5 history mode for clean URLs
+* 根组件
+* 包含 Navbar 组件与 `router-view` 用于页面渲染
+* 包含底部区域与主内容布局
+* 设置整体页面结构
 
-### Components
+### `vite.config.js`
 
-#### `src/components/Navbar.vue`
-- Persistent navigation bar component
-- Responsive design with hamburger menu for mobile devices
-- Highlights active route using `router-link-active` class
-- Sticky positioning at the top of the page
-- Contains navigation links to all main pages
+* Vite 构建工具的配置文件
+* 配置处理 `.vue` 文件的 Vue 插件
+* 设置开发服务器与构建选项
 
-### Views (Pages)
+---
 
-#### `src/views/Home.vue`
-- Homepage with welcome message and personal introduction
-- Displays avatar/logo placeholder
-- Provides quick navigation links to main sections
-- Features hero section with gradient background
-- Shows overview cards for different sections
+# 路由配置（Router Configuration）
 
-#### `src/views/About.vue`
-- Detailed personal story and background
-- Academic interests section with cards
-- Personal passions list
-- Goals and aspirations section
-- Includes placeholder for personal photos
+### `src/router/index.js`
 
-#### `src/views/Skills.vue`
-- Displays technical skills with animated progress bars
-- Shows skill levels as percentages
-- Educational background timeline
-- Relevant courses as tags
-- Awards and achievements section
+* 使用 Vue Router 定义所有应用路由
+* 设置 Home、About、Skills、Links 等静态页面路由
+* 配置 Projects 与 Blog 的动态详情页（使用 `:id` 参数）
+* 使用 HTML5 History 模式，实现干净的 URL（无 `#`）
 
-#### `src/views/Links.vue`
-- Friends' websites links
-- Learning resources (MDN, Vue.js docs, etc.)
-- Developers I admire (GitHub profiles)
-- Each link includes icon, title, description, and URL
-- Opens links in new tabs with security attributes
+---
 
-#### `src/views/Projects.vue`
-- Lists all projects from `projects.json`
-- Fetches project data asynchronously on component mount
-- Displays projects in a responsive grid layout
-- Shows project name, introduction, technologies, and links
-- Implements loading and error states
-- Navigates to detail page on card click
+# 组件（Components）
 
-#### `src/views/ProjectDetail.vue`
-- Displays detailed information about a specific project
-- Fetches project data and finds project by ID from route parameter
-- Shows project description, technologies, screenshots, and contribution
-- Includes GitHub and demo links
-- Has back button to return to projects list
-- Handles cases where project is not found
+### `src/components/Navbar.vue`
 
-#### `src/views/Blog.vue`
-- Lists all blog posts from `blog.json`
-- Fetches blog data asynchronously on component mount
-- Displays posts with title, excerpt, author, date, and tags
-- Shows read time for each post
-- Implements loading and error states
-- Navigates to detail page on card click
+* 固定在顶部的导航栏
+* 移动端具有汉堡菜单的响应式设计
+* 使用 `router-link-active` 高亮当前路由
+* 提供通往所有主要页面的导航链接
 
-#### `src/views/BlogDetail.vue`
-- Displays full blog post content
-- Fetches blog data and finds post by ID from route parameter
-- Formats markdown-style content to HTML
-- Shows post metadata (author, date, tags, read time)
-- Has back button to return to blog list
-- Handles cases where post is not found
+---
 
-### Data Files
+# 页面（Views）
 
-#### `public/data/projects.json`
-- JSON array containing project information
-- Each project includes:
-  - `id`: Unique identifier
-  - `name`: Project name
-  - `introduction`: Short description
-  - `description`: Full project description
-  - `screenshots`: Array of screenshot paths
-  - `technologies`: Array of technology names
-  - `contribution`: Description of personal contribution
-  - `githubUrl`: GitHub repository URL (required)
-  - `demoUrl`: Live demo URL (optional)
+### `src/views/Home.vue`
 
-#### `public/data/blog.json`
-- JSON array containing blog post information
-- Each post includes:
-  - `id`: Unique identifier
-  - `title`: Post title
-  - `excerpt`: Short summary
-  - `content`: Full post content (markdown-style)
-  - `author`: Author name
-  - `date`: Publication date (YYYY-MM-DD)
-  - `tags`: Array of tag strings
-  - `readTime`: Estimated reading time
+* 首页，包含欢迎信息与个人简介
+* 显示头像或 Logo 占位
+* 快速导航到主要板块
+* 包含渐变背景的 hero 区域
+* 展示各板块概览卡片
 
-### Styling
+### `src/views/About.vue`
 
-#### `src/style.css`
-- Global styles and CSS variables
-- Defines color scheme (primary, secondary, text, background)
-- Contains reusable utility classes (container, section-title, card, btn)
-- Sets up base typography and spacing
-- Includes responsive design breakpoints
+* 展示详细的个人故事与背景介绍
+* 学术兴趣板块（卡片样式）
+* 个人兴趣列表
+* 未来目标与规划
+* 可加入个人照片占位符
 
-## Key Features
+### `src/views/Skills.vue`
 
-### 1. Dynamic Content Loading
-- Projects and blog posts are loaded from JSON files
-- Uses Fetch API for asynchronous data loading
-- Implements loading and error states
-- Updates content without code changes
+* 技术技能展示（含动画进度条）
+* 百分比技能熟练度
+* 教育背景时间轴
+* 相关课程标签
+* 奖项与成就展示
 
-### 2. Routing
-- Client-side routing using Vue Router
-- Dynamic routes for project and blog detail pages
-- Clean URLs without hash fragments
-- Navigation between pages without page reloads
+### `src/views/Links.vue`
 
-### 3. Responsive Design
-- Mobile-first approach
-- Hamburger menu for mobile navigation
-- Flexible grid layouts that adapt to screen size
-- Optimized typography and spacing for all devices
+* 好友网站链接
+* 学习资源（如 MDN、Vue 文档）
+* 喜爱的开发者（GitHub Profile）
+* 每个链接包含图标、标题、描述与 URL
+* 超链接使用新标签页打开并具备安全属性
 
-### 4. User Experience
-- Smooth transitions and hover effects
-- Loading indicators during data fetching
-- Error messages with retry options
-- Clear navigation and back buttons
-- Accessible and semantic HTML
+### `src/views/Projects.vue`
 
-### 5. Code Quality
-- Component-based architecture
-- Separation of concerns
-- Reusable components and styles
-- Consistent code style
-- Proper error handling
+* 从 `projects.json` 加载所有项目
+* 使用 Fetch API 异步获取数据
+* 响应式网格布局展示项目
+* 显示项目名称、简介、技术栈与链接
+* 包含加载与错误状态
+* 点击卡片跳转到项目详情页
 
-## Technologies Used
+### `src/views/ProjectDetail.vue`
 
-- **Vue.js 3**: Progressive JavaScript framework
-- **Vue Router 4**: Official router for Vue.js
-- **Vite**: Fast build tool and development server
-- **JavaScript (ES6+)**: Modern JavaScript features
-- **CSS3**: Styling with CSS Grid, Flexbox, and modern features
-- **Fetch API**: For loading JSON data
+* 展示单个项目的完整信息
+* 根据路由参数 ID 获取项目
+* 显示详细描述、技术栈、截图、个人贡献
+* 提供 GitHub 与 Demo 链接
+* 返回项目列表的按钮
+* 处理项目不存在的情况
 
-## Development Workflow
+### `src/views/Blog.vue`
 
-1. **Setup**: Project initialized with Vite and Vue template
-2. **Routing**: Vue Router configured with all required routes
-3. **Components**: Created reusable components (Navbar)
-4. **Views**: Built all page components (Home, About, Skills, Links, Projects, Blog)
-5. **Data**: Created JSON files for projects and blog posts
-6. **Styling**: Implemented responsive design with modern CSS
-7. **Testing**: Tested all features and responsive design
-8. **Documentation**: Created PROMPTS.md and REPORT.md
+* 从 `blog.json` 加载所有博客文章
+* 异步获取数据
+* 显示标题、摘要、作者、日期、标签
+* 显示阅读时间
+* 包含加载与错误状态
+* 点击跳转到博客详情页
 
-## How to Run
+### `src/views/BlogDetail.vue`
 
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
+* 展示完整博客内容
+* 根据路由参数 ID 获取文章
+* 将 Markdown 风格内容格式化成 HTML
+* 显示作者、日期、标签、阅读时间
+* 提供返回按钮
+* 处理文章不存在的情况
 
-2. Start development server:
-   ```bash
-   npm run dev
-   ```
+---
 
-3. Build for production:
-   ```bash
-   npm run build
-   ```
+# 数据文件（Data Files）
 
-4. Preview production build:
-   ```bash
-   npm run preview
-   ```
+### `public/data/projects.json`
+
+* 包含项目数据的 JSON 数组，每个项目包括：
+  * `id`: 唯一标识
+  * `name`: 项目名称
+  * `introduction`: 简短介绍
+  * `description`: 完整项目说明
+  * `screenshots`: 截图路径数组
+  * `technologies`: 技术栈数组
+  * `contribution`: 个人贡献描述
+  * `githubUrl`: GitHub 地址（必填）
+  * `demoUrl`: Demo 地址（可选）
+
+### `public/data/blog.json`
+
+* 包含博客文章的 JSON 数组，每篇文章包括：
+  * `id`: 唯一标识
+  * `title`: 标题
+  * `excerpt`: 摘要
+  * `content`: 完整内容（Markdown 风格）
+  * `author`: 作者
+  * `date`: 日期（YYYY-MM-DD）
+  * `tags`: 标签数组
+  * `readTime`: 预计阅读时长
+
+---
+
+# 样式（Styling）
+
+### `src/style.css`
+
+* 全局样式与 CSS 变量
+* 定义主题色（主色、副色、文字色、背景色）
+* 可复用工具类（container、section-title、card、btn）
+* 字体与间距基础设置
+* 响应式断点配置
+
+---
+
+# 关键特性（Key Features）
+
+## 1. 动态内容加载
+
+* 项目与博客均从 JSON 文件加载
+* 使用 Fetch API 异步获取数据
+* 支持加载状态与错误处理
+* 无需修改代码即可更新内容
+
+## 2. 路由系统
+
+* 使用 Vue Router 的客户端路由
+* 支持项目与博客详情页（动态路由）
+* 无需刷新即可切换页面
+* URL 简洁无 `#`
+
+## 3. 响应式设计
+
+* 移动优先布局
+* 导航栏支持汉堡菜单
+* 网格布局自适应屏幕大小
+* 所有设备上均有良好视觉体验
+
+## 4. 良好用户体验
+
+* 平滑动画与 hover 效果
+* 加载指示
+* 错误重试提示
+* 清晰的导航与返回按钮
+* 语义化 HTML、可访问性良好
+
+## 5. 高质量代码
+
+* 组件化架构
+* 分离关注点
+* 可复用组件与样式
+* 统一代码风格
+* 全面错误处理
+
+---
+
+# 使用技术（Technologies Used）
+
+* **Vue.js 3**
+* **Vue Router 4**
+* **Vite**
+* **JavaScript (ES6+)**
+* **CSS3（含 Grid 与 Flexbox）**
+* **Fetch API**
+
+---
+
+# 开发流程（Development Workflow）
+
+1. **启动项目**：使用 Vite + Vue 初始化
+2. **配置路由**：完成所有页面的路由映射
+3. **开发组件**：如 Navbar
+4. **编写页面**：Home、About、Skills、Links、Projects、Blog
+5. **创建数据文件**：projects.json 与 blog.json
+6. **样式设计**：响应式现代 CSS
+7. **测试**：检查功能与兼容性
+8. **文档**：撰写 PROMPTS.md 与 REPORT.md
 
 ## Deployment
 
-The website can be deployed to various platforms:
-- **Vercel**: Connect GitHub repository for automatic deployments
-- **Netlify**: Drag and drop dist folder or connect GitHub
 - **GitHub Pages**: Deploy static files from dist folder
-
-## Future Improvements
-
-- Add image optimization and lazy loading
-- Implement search functionality for projects and blog
-- Add dark mode theme toggle
-- Create admin panel for managing content
-- Add animations and transitions
-- Implement SEO optimization
-- Add contact form
-- Integrate with GitHub API to fetch repositories dynamically
-
